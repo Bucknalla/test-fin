@@ -1,0 +1,158 @@
+TAP version 13
+# Subtest: balenaFin suite - v0.0.1 - Fri, 02 Sep 2022 14:29:46 GMT
+    # Subtest: Bluetooth
+        # Subtest: check hci0 interface is available
+            # Subtest: check result
+                ok 1 - should report 1 instance of hci0 interface
+                1..1
+            ok 1 - check result # time=30.328ms
+            
+            1..1
+        ok 1 - check hci0 interface is available # time=91.579ms
+        
+        # checking if BD Address is initialized
+        ok 2 - BD Address should not be AA:AA:AA:AA:AA:AA
+        1..2
+    ok 1 - Bluetooth # time=475.244ms
+    
+    # Subtest: Coprocessor
+        # Subtest: attempt to flash firmata
+            # attempting to flash firmware: /usr/src/app/suites/coprocessor/bin/firmata.hex with bootloader: /usr/src/app/suites/coprocessor/bin/bootloader.s37
+            # spawning openocd process with board config -d2,-f,board/balena-fin/balena-fin-v1-1.cfg
+            # spawning telnet client process...
+            # telnet stderr: Connection closed by foreign host.
+            # 
+            # openocd child process exited with code 0
+            # telnet child process exited with code 1
+            ok 1 - bootloader and firmware should start programming
+            ok 2 - bootloader and firmware should finish programming
+            ok 3 - coprocessor should be type of 'EFR32MG1B Blue Gecko'
+            ok 4 - coprocessor should have flash size of '256kbytes'
+            1..4
+        ok 1 - attempt to flash firmata # time=64152.817ms
+        
+        1..1
+    ok 2 - Coprocessor # time=64172.912ms
+    
+    # Subtest: EEPROM
+        # generate test payload: 'odrmLPV7U9RfF76ocV31Z'
+        # Subtest: check eeprom write
+            # writing payload to eeprom
+            ok 1 - no errors should be reported during eeprom - write
+            1..1
+        ok 1 - check eeprom write # time=139.822ms
+        
+        # Subtest: check eeprom read
+            ok 1 - no errors should be reported during eeprom - read
+            ok 2 - expected to read 'odrmLPV7U9RfF76ocV31Z' from eeprom
+            1..2
+        ok 2 - check eeprom read # time=33.98ms
+        
+        1..2
+    ok 3 - EEPROM # time=207.457ms
+    
+    # Subtest: eMMC
+        # Subtest: check size of eMMC
+            # found eMMC of size 16 GB
+            ok 1 - should be of size 8, 16, 32 or 64 GB; is 16 GB
+            1..1
+        ok 1 - check size of eMMC # time=47.65ms
+        
+        1..1
+    ok 4 - eMMC # time=69.04ms
+    
+    # Subtest: Ethernet
+        # Subtest: check eth0 interface is available
+            ok 1 - should be able to see eth0
+            1..1
+        ok 1 - check eth0 interface is available # time=49.17ms
+        
+        # Subtest: check can reach internet
+            ok 1 - should be able to reach the internet
+            1..1
+        ok 2 - check can reach internet # time=4093.743ms
+        
+        1..2
+    ok 5 - Ethernet # time=4180.727ms
+    
+    # Subtest: I2C
+        # Subtest: check i2c interface is available
+            # Subtest: check for i2c addresses
+                ok 1 - i2c address list should be greater than 0
+                # found 3 i2c addresses
+                1..1
+            ok 1 - check for i2c addresses # time=12.094ms
+            
+            1..1
+        ok 1 - check i2c interface is available # time=172.398ms
+        
+        1..1
+    ok 6 - I2C # time=195.898ms
+    
+    ok 7 - Modem # SKIP
+    # Subtest: RGB LED
+        # Subtest: check rgb led can be controlled
+            # setting RGB LED to cyan
+            # Subtest: check dmesg for driver output
+                ok 1 - should be able to control RGB LED
+                # driver output: [   11.946683] pca953x 11-0020: supply vcc not found, using dummy regulator
+                # [   11.946870] pca953x 11-0020: using no AI
+                # 
+                1..1
+            ok 1 - check dmesg for driver output # time=11.558ms
+            
+            1..1
+        ok 1 - check rgb led can be controlled # time=2109.38ms
+        
+        1..1
+    ok 8 - RGB LED # time=2128.999ms
+    
+    # Subtest: RTC
+        # Subtest: check the RTC is registered
+            # Subtest: check that a date is received
+                # rtc datetime shown as 2022-09-02 14:30:58.459107+00:00
+                # 
+                ok 1 - hwclock should report valid datetime
+                ok 2 - hwclock should not report any errors
+                1..2
+            ok 1 - check that a date is received # time=14.412ms
+            
+            1..1
+        ok 1 - check the RTC is registered # time=591.28ms
+        
+        1..1
+    ok 9 - RTC # time=615.019ms
+    
+    # Subtest: USB
+        # Subtest: check USB list for devices
+            # Subtest: check for at least 3 devices on the bus
+                ok 1 - expecting at least 3 devices on the usb bus
+                1..1
+            ok 1 - check for at least 3 devices on the bus # time=8.49ms
+            
+            1..1
+        ok 1 - check USB list for devices # time=86.789ms
+        
+        1..1
+    ok 10 - USB # time=104.449ms
+    
+    # Subtest: WiFi
+        # Subtest: check wlan0 interface is available
+            # Subtest: check result
+                ok 1 - should contain 1 instance of wlan0 interface
+                1..1
+            ok 1 - check result # time=10.756ms
+            
+            1..1
+        ok 1 - check wlan0 interface is available # time=47.462ms
+        
+        1..1
+    ok 11 - WiFi # time=64.972ms
+    
+    1..11
+    # skip: 1
+ok 1 - balenaFin suite - v0.0.1 - Fri, 02 Sep 2022 14:29:46 GMT # time=72309.214ms
+
+1..1
+# time=72413.001ms
+# location='Athens, Attica, Greece'
